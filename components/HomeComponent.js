@@ -1,11 +1,15 @@
 import CurrentWeather from './CurrentWeather'
-//const oneCall = await fetch(`https://api.openweathermap.org/data/2.5/${requests.fetchOneCall.url(request.coord.lat,request.coord.lon)}`).then(response=>response.json())
+import DailyWeatherDetails from './DailyWeatherDetails'
+
 function HomeComponent({CurrentWeatherData, OneCallWeatherData}) {
 
     return (
-        <div>
-            <CurrentWeather CurrentWeatherData={CurrentWeatherData}/>
-        </div>
+        <main>
+            <div className="container flex flex-col lg:flex-row">
+                <CurrentWeather CurrentWeatherData={CurrentWeatherData} OneCallWeatherData={OneCallWeatherData}/>
+                <DailyWeatherDetails OneCallWeatherData={OneCallWeatherData}/>
+            </div>
+        </main>
     )
 }
 

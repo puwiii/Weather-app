@@ -1,5 +1,6 @@
 const WEATHER_API_KEY = process.env.WEATHER_API_KEY;
 const GEO_API_KEY = process.env.GEO_API_KEY;
+const GOOGLE_API_KEY = process.env.GOOGLE_API_KEY;
 
 export default {
 

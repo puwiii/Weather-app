@@ -1,7 +1,6 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 .container {
   width: 100vw;
   padding: 0px 20px;
@@ -17,6 +16,7 @@
 @media (min-width: 64em) {
   .container {
     padding: 0;
+    width: 90%;
     max-width: 1920px;
   }
 }

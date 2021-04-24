@@ -6,7 +6,11 @@ module.exports = {
     extend: {},
   },
   variants: {
-    extend: {},
+    extend: {
+      backgroundImage: theme => ({
+      'main-background': "url('/imgs/campo.jpg')"
+     })
+    },
   },
   plugins: [],
 }
