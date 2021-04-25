@@ -5,7 +5,7 @@ function CurrentWeather({CurrentWeatherData, OneCallWeatherData}) {
     const URL = 'http://openweathermap.org/img/wn/'
 
     return (
-        <div className="p-4 bg-white bg-opacity-50 text-center max-w-sm flex flex-col flex-1">
+        <div className="p-4 bg-white bg-opacity-50 text-center max-w-sm h-full flex flex-col flex-1 rounded-lg md:rounded-none sticky top-2">
             <div className="p-4 pt-0">
                 <div className="leading-10">
                     <h1 className="text-4xl font-bold">{CurrentWeatherData.name}</h1>

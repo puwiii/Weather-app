@@ -5,9 +5,11 @@ function HomeComponent({CurrentWeatherData, OneCallWeatherData}) {
 
     return (
         <main>
-            <div className="container flex flex-col lg:flex-row">
-                <CurrentWeather CurrentWeatherData={CurrentWeatherData} OneCallWeatherData={OneCallWeatherData}/>
-                <DailyWeatherDetails OneCallWeatherData={OneCallWeatherData}/>
+            <div className="container">
+                <div className="flex flex-col max-w-100 lg:flex-row">
+                    <CurrentWeather CurrentWeatherData={CurrentWeatherData} OneCallWeatherData={OneCallWeatherData}/>
+                    <DailyWeatherDetails OneCallWeatherData={OneCallWeatherData}/>
+                </div>
             </div>
         </main>
     )

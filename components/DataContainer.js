@@ -13,7 +13,7 @@ import morningIcon from "../imgs/morning.png";
 import noonIcon from "../imgs/noon.png";
 import eveningIcon from "../imgs/evening.png";
 import nightIcon from "../imgs/night.png";
-function DataContainer({image, title, data, units, color, round, sufix, compactType}) {
+function DataContainer({image, title, data, units, color, round, sufix, isCompact}) {
     
     const [icon, setIcon] = useState(minTempIcon)
     const [uvValue, setUvValue] = useState()
@@ -60,6 +60,7 @@ function DataContainer({image, title, data, units, color, round, sufix, compactT
                 setIcon(nightIcon)
                 break;
             default:
+                setIcon(image)
                 break;
         }
 
@@ -92,17 +93,42 @@ function DataContainer({image, title, data, units, color, round, sufix, compactT
     }, [image, data])
 
     return (
-        <div className="flex-1 rounded-xl text-gray-800">
+        <div className="flex-1 rounded-xl text-gray-800">    
+         
+                
+                
             {
-                uvValue ? 
-                <div className={uvValue + " " + "m-2 p-2 flex flex-1 justify-between items-center"}>
+            isCompact ? 
+                <div className={color + " " + "m-2 p-2 flex items-center flex-col" +" "+uvValue}>
+
                     <Image
                         src={icon}
                         alt=""
-                        width="50"
-                        height="50"
+                        width="25"
+                        height="25"
                         objectFit="contain"
                     />
+
+                    <div>   
+                        <h3 className="text-xl font-bold ml-2">
+                            {
+                            round ?
+                            Math.round(data)+units
+                            :
+                            data+units
+                            }
+                        </h3>
+                    </div>
+                </div>
+            :
+                <div className={color + " " + "m-2 p-2 flex flex-1 justify-between items-center" +" "+uvValue}>
+                        <Image
+                            src={icon}
+                            alt=""
+                            width="50"
+                            height="50"
+                            objectFit="contain"
+                        />
                     <div className="text-right">
                         <h4 className="text-sm text-gray-600 font-light">{title}</h4>
                         <div className="flex items-start flex-wrap-reverse justify-end">
@@ -117,36 +143,88 @@ function DataContainer({image, title, data, units, color, round, sufix, compactT
                                 }
                             </h3>
                         </div>
-                    </div>
-                </div>
-                :
-                <div className={color + " " + "m-2 p-2 flex flex-1 justify-between items-center"}>
-                    <Image
-                        src={icon}
-                        alt=""
-                        width="50"
-                        height="50"
-                        objectFit="contain"
-                    />
-                    <div className="text-right">
-                        <h4 className="text-sm text-gray-600 font-light">{title}</h4>
-                        <div className="flex items-start flex-wrap-reverse justify-end">
-                            <span className="text-base font-medium">{sufix}</span>
-                            <h3 className="text-2xl font-bold ml-2">
-                            
-                                {
-                                round ?
-                                Math.round(data)+units
-                                :
-                                data+units
-                                }
-                            </h3>
-                        </div>
-                    </div>
-                </div>
+                    </div> 
+                </div>           
             }
-            
+                
         </div>
+
+        // <div className="flex-1 rounded-xl text-gray-800">
+        //     {
+        //         uvValue ? 
+        //         <div className={"m-2 p-2 flex flex-1 justify-between items-center" + " "+uvValue}>
+
+        //             <Image
+        //                 src={icon}
+        //                 alt=""
+        //                 width="50"
+        //                 height="50"
+        //                 objectFit="contain"
+        //             />
+        //             {
+        //             isCompact ? 
+        //                 <div className="text-right">
+        //                     <h4 className="text-sm text-gray-600 font-light">{title}</h4>
+        //                     <div className="flex items-start flex-wrap-reverse justify-end">
+        //                         <span className="text-base font-medium">{sufix}</span>
+        //                         <h3 className="text-2xl font-bold ml-2">
+                                
+        //                             {
+        //                             round ?
+        //                             Math.round(data)+units
+        //                             :
+        //                             data+units
+        //                             }
+        //                         </h3>
+        //                     </div>
+        //                 </div>
+        //             :
+        //                 <div className="text-right">
+        //                     <h4 className="text-sm text-gray-600 font-light">{title}</h4>
+        //                     <div className="flex items-start flex-wrap-reverse justify-end">
+        //                         <span className="text-base font-medium">{sufix}</span>
+        //                         <h3 className="text-2xl font-bold ml-2">
+                                
+        //                             {
+        //                             round ?
+        //                             Math.round(data)+units
+        //                             :
+        //                             data+units
+        //                             }
+        //                         </h3>
+        //                     </div>
+        //                 </div>            
+        //             }
+                    
+        //         </div>
+        //         :
+        //         <div className={color + " " + "m-2 p-2 flex flex-1 justify-between items-center"+ uvValue}>
+        //             <Image
+        //                 src={icon}
+        //                 alt=""
+        //                 width="50"
+        //                 height="50"
+        //                 objectFit="contain"
+        //             />
+        //             <div className="text-right">
+        //                 <h4 className="text-sm text-gray-600 font-light">{title}</h4>
+        //                 <div className="flex items-start flex-wrap-reverse justify-end">
+        //                     <span className="text-base font-medium">{sufix}</span>
+        //                     <h3 className="text-2xl font-bold ml-2">
+                            
+        //                         {
+        //                         round ?
+        //                         Math.round(data)+units
+        //                         :
+        //                         data+units
+        //                         }
+        //                     </h3>
+        //                 </div>
+        //             </div>
+        //         </div>
+        //     }
+            
+        // </div>
         
     )
 }

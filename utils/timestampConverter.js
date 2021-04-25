@@ -11,7 +11,9 @@ export function convertTimestamp(time, lang, timezoneOffset){
     
 
     const dayName= dateObject.toLocaleString(lang, {weekday: "long"})
+    const CompactDayName= dateObject.toLocaleString(lang, {weekday: "short"})
     const monthName= dateObject.toLocaleString(lang, {month: "long"}) // December
+    const compactMonthName= dateObject.toLocaleString(lang, {month: "short"}) // December
     const dayNumber= dateObject.toLocaleString(lang, {day: "numeric"}) // 9
     const year= dateObject.toLocaleString(lang, {year: "numeric"}) // 2019
     const hour= dateObject.toLocaleString(lang, {hour: "2-digit"}) // 10 AM
@@ -22,6 +24,7 @@ export function convertTimestamp(time, lang, timezoneOffset){
     
     const datetime={
         dayname: dayName,
+        compactdayname: CompactDayName,
         monthname: monthName, 
         daynumbre: dayNumber, 
         year: year, 
@@ -31,6 +34,7 @@ export function convertTimestamp(time, lang, timezoneOffset){
         fullhour: hour+":"+ (minutes >= 10 ? minutes :  "0"+minutes) +":"+ (seconds >= 10 ? seconds :  "0"+seconds),
         compacthour: hour+":"+ (minutes >= 10 ? minutes :  "0"+minutes),
         fulldate: fullDate, 
+        compactdate: dayName+" "+dayNumber+" de "+compactMonthName
 
     }
 
