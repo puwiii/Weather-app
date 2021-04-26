@@ -85,7 +85,7 @@ function DailyWeatherDetails({OneCallWeatherData}) {
                             <DataContainer image="night" data={dailyInfo.temp.night} units="°C" isCompact="true" round={true}/>
                         </div>
                         <div className="flex justify-between">
-                            <DataContainer image="precipitation" data={dailyInfo.pop} units="%" isCompact="true"/>
+                            <DataContainer image="precipitation" data={dailyInfo.pop*100} units="%" isCompact="true"/>
                             <DataContainer image="humedity" data={dailyInfo.humidity} units="%" isCompact="true"/>
                             <DataContainer image="clouds" data={dailyInfo.clouds} units="%" isCompact="true"/>
                             <DataContainer image="wind" data={dailyInfo.wind_speed} units="m/s" isCompact="true"/>
