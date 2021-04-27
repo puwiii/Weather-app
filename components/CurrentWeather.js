@@ -47,7 +47,7 @@ function CurrentWeather({CurrentWeatherData, OneCallWeatherData}) {
                 <DataContainer image="precipitation" title="Precipitaciones" data={OneCallWeatherData.daily[0].pop*100} units="%" color="bg-transparent"/>       
                 <DataContainer image="humedity" title="Humedad" data={OneCallWeatherData.daily[0].humidity} units="%" color="bg-transparent"/>
                 <DataContainer image="clouds" title="Nubosidad" data={CurrentWeatherData.clouds.all} units="%"/>
-                <DataContainer image="wind" title="Vientos" data={(CurrentWeatherData.wind.speed*3.6).toFixed(2)} sufix={CurrentWeatherData.wind.deg+"° "} units="k/h" color="bg-transparent"/>       
+                <DataContainer image="wind" title="Vientos" data={(CurrentWeatherData.wind.speed*3.6)} sufix={CurrentWeatherData.wind.deg+"° "} units="k/h" round="true"/>       
                 <DataContainer image="uv" title="indice UV" data={OneCallWeatherData.current.uvi} units="" color="bg-white bg-opacity-50"/>
             </div>
             
