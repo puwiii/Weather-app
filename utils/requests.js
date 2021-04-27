@@ -23,10 +23,10 @@ export default {
             url(cityName){ return `weather?q=${cityName}&units=metric&lang=es&appid=${WEATHER_API_KEY}`},
         },
         
-        fetchCurrentWeatherDataByZip: {
-            title: "Codigo Postal",
-            url(zipCode,countryCode){ return `weather?zip=${zipCode},${countryCode}&units=metric&lang=es&appid=${WEATHER_API_KEY}`},
-        }
+        // fetchCurrentWeatherDataByZip: {
+        //     title: "Codigo Postal",
+        //     url(zipCode,countryCode){ return `weather?zip=${zipCode},${countryCode}&units=metric&lang=es&appid=${WEATHER_API_KEY}`},
+        // }
     },
 
     // fetchCurrentWeatherDataByZip: {

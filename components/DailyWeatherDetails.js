@@ -30,20 +30,14 @@ function DailyWeatherDetails({OneCallWeatherData}) {
 
     //console.log("offset>>>"+oneCallWeatherData?.timezone_offset)
     return (
-        <div className="p-4 bg-white bg-opacity-50 flex-1 ml-2 w-100 max-w-full">
+        <div className="p-4 py-10 bg-white bg-opacity-50 flex-1 w-100 max-w-full mb-10">
 
-            <div className="flex justify-between items-center">
-                <div>
-                    <h2 className="pr-2 text-6xl font-bold tracking-wider">
-                        <Clock format={'HH:mm:ss'} ticking={true} timezone={OneCallWeatherData.timezone}/>
-                        <span className="text-right font-light text-3xl">hs</span>
-                    </h2>
-                </div>
-                <div className="flex flex-1 ">
-                    <DataContainer image="sunrise" title="Amanecer" data={convertTimestamp(OneCallWeatherData.current.sunrise, "sp-ES", OneCallWeatherData.timezone_offset).compacthour} units="hs" color="bg-white bg-opacity-50"/>
-                    <DataContainer image="sunset" title="Ocaso" data={convertTimestamp(OneCallWeatherData.current.sunset, "sp-ES", OneCallWeatherData.timezone_offset).compacthour} units="hs" color="bg-white bg-opacity-50"/>
-                </div>
+
+            <div className="flex flex-1 ">
+                <DataContainer image="sunrise" title="Amanecer" data={convertTimestamp(OneCallWeatherData.current.sunrise, "sp-ES", OneCallWeatherData.timezone_offset).compacthour} units="hs" color="bg-white bg-opacity-50"/>
+                <DataContainer image="sunset" title="Ocaso" data={convertTimestamp(OneCallWeatherData.current.sunset, "sp-ES", OneCallWeatherData.timezone_offset).compacthour} units="hs" color="bg-white bg-opacity-50"/>
             </div>
+            
             <div className="grid grid-cols-2 lg:grid-cols-4">
                 <DataContainer image="morning" title="Mañana" data={OneCallWeatherData.daily[0].temp.morn} units="°C" color="bg-white bg-opacity-50" sufix={"ST "+Math.round(OneCallWeatherData.daily[0].feels_like.morn)+"°C"} round={true}/>
                 <DataContainer image="noon" title="Mediodia" data={OneCallWeatherData.daily[0].temp.day} units="°C" color="bg-white bg-opacity-50" sufix={"ST "+Math.round(OneCallWeatherData.daily[0].feels_like.day)+"°C"} round={true}/>
@@ -51,7 +45,8 @@ function DailyWeatherDetails({OneCallWeatherData}) {
                 <DataContainer image="night" title="Noche" data={OneCallWeatherData.daily[0].temp.night} units="°C" color="bg-white bg-opacity-50" sufix={"ST "+Math.round(OneCallWeatherData.daily[0].feels_like.night)+"°C"} round={true}/>
             </div>
 
-            <div className={"p-1 flex flex-wrap overflow-y-hidden max-h-56 mt-12"+ (hourlyDetails ? " max-h-full":"")}>
+            <h2 className="text-3xl font-bold text-gray-500 mb-4 mt-44">Siguientes 48hs</h2>
+            <div className={"p-1 flex flex-wrap overflow-y-hidden max-h-56"+ (hourlyDetails ? " max-h-full":"")}>
                 {OneCallWeatherData.hourly.map((hourInfo)=>(
                     <div className="bg-black bg-opacity-5 rounded-sm p-1 m-1 w-max-44 flex-1">
                         <h3 className="font-medium text-2xl text-center">
@@ -71,7 +66,8 @@ function DailyWeatherDetails({OneCallWeatherData}) {
                 <button onClick={()=>toogleHourlyBox()} className="text-lg text-white font-bold px-3 py-1 mt-2 rounded-2xl bg-blue-500 focus:outline-none focus:ring-4 focus:border-blue-300" >{hourlyDetails ? "Mostrar Menos ▲" : "Mostrar Mas ▼"}</button>
             </div>
             
-            <div className={"py-4 flex flex-wrap overflow-y-hidden max-h-56 mt-12"+ (dailyDetails ? " max-h-full":"")}>
+            <h2 className="text-3xl font-bold text-gray-500 mb-4 mt-44">Siguientes Dias</h2>
+            <div className={"py-4 flex flex-wrap overflow-y-hidden max-h-56"+ (dailyDetails ? " max-h-full":"")}>
                 {OneCallWeatherData.daily.map((dailyInfo)=>(
                     <div className="bg-black bg-opacity-5 rounded-sm p-1 m-1 w-max-44 flex-1">
                         <h3 className="font-medium text-2xl text-center">
@@ -85,9 +81,9 @@ function DailyWeatherDetails({OneCallWeatherData}) {
                             <DataContainer image="night" data={dailyInfo.temp.night} units="°C" isCompact="true" round={true}/>
                         </div>
                         <div className="flex justify-between">
-                            <DataContainer image="precipitation" data={ dailyInfo.pop*100 } units="%" isCompact="true"/>
-                            <DataContainer image="humedity" data={dailyInfo.humidity} units="%" isCompact="true"/>
-                            <DataContainer image="clouds" data={dailyInfo.clouds} units="%" isCompact="true"/>
+                            <DataContainer image="precipitation" data={ dailyInfo.pop*100 } units="%" isCompact="true" round={true}/>
+                            <DataContainer image="humedity" data={dailyInfo.humidity} units="%" isCompact="true" round={true}/>
+                            <DataContainer image="clouds" data={dailyInfo.clouds} units="%" isCompact="true" round={true}/>
                             <DataContainer image="wind" data={dailyInfo.wind_speed} units="m/s" isCompact="true"/>
                             
                         </div>

@@ -2,7 +2,7 @@ const withImages = require('next-images')
 
 module.exports = {
     images: {
-        domains: ['openweathermap.org']
+        domains: ['openweathermap.org','images.pexels.com']
     },
     
     webpack: (config, options) => {

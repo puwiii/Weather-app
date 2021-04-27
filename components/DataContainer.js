@@ -99,7 +99,7 @@ function DataContainer({image, title, data, units, color, round, sufix, isCompac
                 
             {
             isCompact ? 
-                <div className={color + " " + "m-2 p-2 flex items-center flex-col" +" "+uvValue}>
+                <div className={color + " " + "m-0 p-0 flex items-center justify-center flex-col" +" "+uvValue}>
 
                     <Image
                         src={icon}
@@ -110,7 +110,7 @@ function DataContainer({image, title, data, units, color, round, sufix, isCompac
                     />
 
                     <div>   
-                        <h3 className="text-xl font-bold ml-2">
+                        <h3 className="text-lg font-bold ml-2 md:text-xl">
                             {
                             round ?
                             Math.round(data)+units
@@ -125,15 +125,16 @@ function DataContainer({image, title, data, units, color, round, sufix, isCompac
                         <Image
                             src={icon}
                             alt=""
-                            width="50"
-                            height="50"
+                            width="60"
+                            height="60"
                             objectFit="contain"
+                            className="filter drop-shadow-lg"
                         />
                     <div className="text-right">
-                        <h4 className="text-sm text-gray-600 font-light">{title}</h4>
-                        <div className="flex items-start flex-wrap-reverse justify-end">
-                            <span className="text-base font-medium">{sufix}</span>
-                            <h3 className="text-2xl font-bold ml-2">
+                        <h4 className="text-sm text-gray-400 font-medium md:text-lg">{title}</h4>
+                        <div className="flex items-center flex-wrap-reverse justify-end">
+                            <span className="text-xs font-medium md:text-base">{sufix}</span>
+                            <h3 className="text-base font-bold ml-1 md:text-2xl">
                             
                                 {
                                 round ?
