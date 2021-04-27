@@ -56,7 +56,7 @@ function DailyWeatherDetails({ OneCallWeatherData }) {
                         </h3>
                         <DataContainer image={URL + hourInfo.weather[0].icon + '@2x.png'} title={hourInfo.weather[0].description} data={hourInfo.temp} units="°C" sufix={"ST " + Math.round(hourInfo.feels_like) + "°C"} round={true} />
                         <div className="flex">
-                            <DataContainer image="precipitation" data={hourInfo.pop * 100} units="%" isCompact="true" />
+                            <DataContainer image="precipitation" data={hourInfo.pop * 100} units="%" isCompact="true" round={true}/>
                             <DataContainer image="humedity" data={hourInfo.humidity} units="%" isCompact="true" />
                             <DataContainer image="clouds" data={hourInfo.clouds} units="%" isCompact="true" />
                         </div>
