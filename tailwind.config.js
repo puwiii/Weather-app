@@ -7,8 +7,8 @@ module.exports = {
     fontFamily:{
       'roboto': ['Roboto'],
       'opensans': ['Open Sans'],
-      'inter': ['"Inter"']
-    }
+      'inter': ['Inter', 'sans-serif']
+    },
   },
   variants: {
     extend: {

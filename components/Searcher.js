@@ -27,7 +27,7 @@ function Searcher() {
     }
 
     return (
-        <form className="flex flex-0 px-4 py-2 items-center rounded-3xl bg-black bg-opacity-50 text-xs  md:text-sm ">
+        <form className="flex flex-1 px-4 py-2 items-center rounded-3xl bg-black bg-opacity-50 text-xs  md:text-sm ">
 
             <button 
                 type="submit" 

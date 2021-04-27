@@ -45,16 +45,17 @@ function DailyWeatherDetails({OneCallWeatherData}) {
                 <DataContainer image="night" title="Noche" data={OneCallWeatherData.daily[0].temp.night} units="°C" color="bg-white bg-opacity-50" sufix={"ST "+Math.round(OneCallWeatherData.daily[0].feels_like.night)+"°C"} round={true}/>
             </div>
 
-            <h2 className="text-3xl font-bold text-gray-500 mb-4 mt-44">Siguientes 48hs</h2>
-            <div className={"p-1 flex flex-wrap overflow-y-hidden max-h-56"+ (hourlyDetails ? " max-h-full":"")}>
-                {OneCallWeatherData.hourly.map((hourInfo)=>(
-                    <div className="bg-black bg-opacity-5 rounded-sm p-1 m-1 w-max-44 flex-1">
+            <h2 className="text-3xl font-bold text-gray-500 mb-4 mt-24">Siguientes horas</h2>
+            <div className={"relative p-1 flex flex-wrap grid grid-cols-1 overflow-y-hidden" + (hourlyDetails ? "max-h-full":" max-h-96") + " md:grid-cols-2 lg:flex lg:flex-nowrap lg:overflow-x-scroll lg:max-h-full"}>
+                <div className={"absolute w-full h-full bg-gradient-to-b from-transparent to-gray-100" + (hourlyDetails ? "hidden":" block") + " lg:hidden"}></div>
+                {OneCallWeatherData.hourly.map((hourInfo, index)=>(
+                    <div className="flex flex-col items-stretch bg-black bg-opacity-5 rounded-sm p-1 py-4 m-1 flex-1 lg:flex-none lg:w-96" key={index}>
                         <h3 className="font-medium text-2xl text-center">
                             <span className="block font-light text-sm">{convertTimestamp(hourInfo.dt, "sp-ES", OneCallWeatherData.timezone_offset).compactdayname}</span>
                             {convertTimestamp(hourInfo.dt, "sp-ES", OneCallWeatherData.timezone_offset).hour}hs                      
                         </h3>
                         <DataContainer image={URL+hourInfo.weather[0].icon+'@2x.png'} title={hourInfo.weather[0].description} data={hourInfo.temp} units="°C" sufix={"ST "+Math.round(hourInfo.feels_like)+"°C"} round={true}/>
-                        <div className="flex justify-between">
+                        <div className="flex">
                             <DataContainer image="precipitation" data={hourInfo.pop} units="%" isCompact="true"/>
                             <DataContainer image="humedity" data={hourInfo.humidity} units="%" isCompact="true"/>
                             <DataContainer image="clouds" data={hourInfo.clouds} units="%" isCompact="true"/>
@@ -62,36 +63,38 @@ function DailyWeatherDetails({OneCallWeatherData}) {
                     </div>
                 ))}
             </div>
-            <div className="text-center flex justify-center">
-                <button onClick={()=>toogleHourlyBox()} className="text-lg text-white font-bold px-3 py-1 mt-2 rounded-2xl bg-blue-500 focus:outline-none focus:ring-4 focus:border-blue-300" >{hourlyDetails ? "Mostrar Menos ▲" : "Mostrar Mas ▼"}</button>
+            <div className="text-center flex justify-center lg:hidden">
+                <button onClick={()=>toogleHourlyBox()} className="text-base text-white font-medium px-4 py-2 mt-2 rounded-2xl bg-blue-500 focus:outline-none focus:ring-4 focus:border-blue-300" >{hourlyDetails ? "Mostrar Menos ▲" : "Mostrar Mas ▼"}</button>
             </div>
             
-            <h2 className="text-3xl font-bold text-gray-500 mb-4 mt-44">Siguientes Dias</h2>
-            <div className={"py-4 flex flex-wrap overflow-y-hidden max-h-56"+ (dailyDetails ? " max-h-full":"")}>
-                {OneCallWeatherData.daily.map((dailyInfo)=>(
-                    <div className="bg-black bg-opacity-5 rounded-sm p-1 m-1 w-max-44 flex-1">
-                        <h3 className="font-medium text-2xl text-center">
-                            {convertTimestamp(dailyInfo.dt, "sp-ES", OneCallWeatherData.timezone_offset).compactdate}                      
+            <h2 className="text-3xl font-bold text-gray-500 mb-4 mt-24">Siguientes Dias</h2>
+            <div className={"relative p-1 flex flex-wrap grid grid-cols-1 overflow-y-hidden" + (dailyDetails ? "max-h-full":" max-h-96") + " md:grid-cols-2 lg:flex lg:flex-nowrap lg:overflow-x-scroll lg:max-h-full"}>
+                <div className={"absolute w-full h-full bg-gradient-to-b from-transparent to-gray-100" + (hourlyDetails ? "hidden":" block") + " lg:hidden"}></div>
+                {OneCallWeatherData.daily.map((dailyInfo, index)=>(
+                    <div className="flex flex-col items-stretch bg-black bg-opacity-5 rounded-sm p-1 py-4 m-1 flex-1 lg:flex-none lg:w-96" key={index}>
+                        <h3 className="font-medium text-base text-center">
+                            <span className="block font-light text-sm">{convertTimestamp(dailyInfo.dt, "sp-ES", OneCallWeatherData.timezone_offset).monthname}</span>
+                            {convertTimestamp(dailyInfo.dt, "sp-ES", OneCallWeatherData.timezone_offset).daynumbre + " " + convertTimestamp(dailyInfo.dt, "sp-ES", OneCallWeatherData.timezone_offset).dayname}                      
                         </h3>
                         <DataContainer image={URL+dailyInfo.weather[0].icon+'@2x.png'} title={dailyInfo.weather[0].description} data={dailyInfo.temp.day} units="°C" sufix="en el dia" round={true}/>
-                        <div className="flex justify-between">
+                        <div className="flex justify-between py-2">
                             <DataContainer image="morning" data={dailyInfo.temp.morn} units="°C" isCompact="true" round={true}/>
                             <DataContainer image="noon" data={dailyInfo.temp.day} units="°C" isCompact="true" round={true}/>
                             <DataContainer image="evening" data={dailyInfo.temp.eve} units="°C" isCompact="true" round={true}/>
                             <DataContainer image="night" data={dailyInfo.temp.night} units="°C" isCompact="true" round={true}/>
                         </div>
-                        <div className="flex justify-between">
+                        <div className="flex justify-between py-2">
                             <DataContainer image="precipitation" data={ dailyInfo.pop*100 } units="%" isCompact="true" round={true}/>
                             <DataContainer image="humedity" data={dailyInfo.humidity} units="%" isCompact="true" round={true}/>
                             <DataContainer image="clouds" data={dailyInfo.clouds} units="%" isCompact="true" round={true}/>
-                            <DataContainer image="wind" data={dailyInfo.wind_speed} units="m/s" isCompact="true"/>
+                            <DataContainer image="wind" data={(dailyInfo.wind_speed*3.6).toFixed(1)} units="k/h" isCompact="true"/>
                             
                         </div>
                     </div>
                 ))}
             </div>
-            <div className="text-center flex justify-center">
-                <button onClick={()=>toogleDailyBox()} className="text-lg text-white font-bold px-3 py-1 mt-2 rounded-2xl bg-blue-500 focus:outline-none focus:ring-4 focus:border-blue-300" >{dailyDetails ? "Mostrar Menos ▲" : "Mostrar Mas ▼"}</button>
+            <div className="text-center flex justify-center lg:hidden">
+                <button onClick={()=>toogleDailyBox()} className="text-base text-white font-medium px-4 py-2 mt-2 rounded-2xl bg-blue-500 focus:outline-none focus:ring-4 focus:border-blue-300" >{dailyDetails ? "Mostrar Menos ▲" : "Mostrar Mas ▼"}</button>
             </div>
 
         </div>

@@ -6,15 +6,15 @@ function CurrentWeather({CurrentWeatherData, OneCallWeatherData}) {
     const URL = 'http://openweathermap.org/img/wn/'
 
     return (
-        <div className="p-4 py-10 bg-white bg-opacity-50 text-center h-full flex flex-col flex-1 rounded-lg md:rounded-none">
-            <div className="p-4 pt-0">
+        <div className="p-4 py-10 text-center h-full flex flex-col flex-1 rounded-lg md:rounded-none lg:flex-row lg:items-center justify-center">
+            <div className="p-4 pt-0 flex-1">
                 <div className="text-center justify-between items-center m-auto">
-                    <h2 className="pb-10 text-2xl font-bold tracking-wider">
-                        <Clock format={'HH:mm:ss'} ticking={true} timezone={OneCallWeatherData.timezone}/>
+                    <h2 className="pb-10 text-2xl font-bold tracking-wider lg:text-4xl">
+                        <Clock format={'HH:mm:ss:'} ticking={true} timezone={OneCallWeatherData.timezone}/>
                     </h2>
                 </div>
                 <div className="leading-10">
-                    <h1 className="text-2xl font-bold md:text-4xl">{CurrentWeatherData.name}</h1>
+                    <h1 className="text-2xl font-bold md:text-4xl lg:text-6xl">{CurrentWeatherData.name}</h1>
                     <span>{CurrentWeatherData.sys.country}</span>
                 </div>
                 <div className="w-full max-w-lg m-auto flex flex-wrap justify-evenly items-center">
@@ -30,7 +30,7 @@ function CurrentWeather({CurrentWeatherData, OneCallWeatherData}) {
                 </div>
             </div>
             
-            <div className="flex flex-col max-w-lg w-full m-auto">
+            <div className="flex flex-1 flex-col w-full m-auto">
                 <div className="flex flex-1 justify-between items-center -mt-4">
                     <DataContainer image="minTemp" title="Min" data={OneCallWeatherData.daily[0].temp.min} units="°C" color="bg-white bg-opacity-50" round="true"/>
                     <DataContainer image="maxTemp" title="Max" data={OneCallWeatherData.daily[0].temp.max} units="°C" color="bg-white bg-opacity-50" round="true"/>
@@ -38,7 +38,7 @@ function CurrentWeather({CurrentWeatherData, OneCallWeatherData}) {
                 <DataContainer image="precipitation" title="Precipitaciones" data={OneCallWeatherData.daily[0].pop*100} units="%" color="bg-transparent"/>       
                 <DataContainer image="humedity" title="Humedad" data={OneCallWeatherData.daily[0].humidity} units="%" color="bg-transparent"/>
                 <DataContainer image="clouds" title="Nubosidad" data={CurrentWeatherData.clouds.all} units="%"/>
-                <DataContainer image="wind" title="Vientos" data={CurrentWeatherData.wind.speed} sufix={CurrentWeatherData.wind.deg+"° "} units="m/s" color="bg-transparent"/>       
+                <DataContainer image="wind" title="Vientos" data={(CurrentWeatherData.wind.speed*3.6).toFixed(2)} sufix={CurrentWeatherData.wind.deg+"° "} units="m/s" color="bg-transparent"/>       
                 <DataContainer image="uv" title="indice UV" data={OneCallWeatherData.current.uvi} units="" color="bg-white bg-opacity-50"/>
             </div>
             

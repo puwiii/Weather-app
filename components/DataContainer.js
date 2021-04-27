@@ -107,10 +107,11 @@ function DataContainer({image, title, data, units, color, round, sufix, isCompac
                         width="25"
                         height="25"
                         objectFit="contain"
+                        quality={40}
                     />
 
                     <div>   
-                        <h3 className="text-lg font-bold ml-2 md:text-xl">
+                        <h3 className="text-xs font-bold ml-2 md:text-base lg:text-xl">
                             {
                             round ?
                             Math.round(data)+units
@@ -128,10 +129,11 @@ function DataContainer({image, title, data, units, color, round, sufix, isCompac
                             width="60"
                             height="60"
                             objectFit="contain"
-                            className="filter drop-shadow-lg"
+                            quality={90}
+                            className="filter drop-shadow-sm"
                         />
                     <div className="text-right">
-                        <h4 className="text-sm text-gray-400 font-medium md:text-lg">{title}</h4>
+                        <h4 className="text-xs text-gray-400 font-medium md:text-lg">{title}</h4>
                         <div className="flex items-center flex-wrap-reverse justify-end">
                             <span className="text-xs font-medium md:text-base">{sufix}</span>
                             <h3 className="text-base font-bold ml-1 md:text-2xl">
