@@ -1,5 +1,6 @@
 import DataContainer from './DataContainer'
 import Clock from 'react-live-clock';
+import Image from 'next/image'
 
 function CurrentWeather({CurrentWeatherData, OneCallWeatherData}) {
     
@@ -19,7 +20,15 @@ function CurrentWeather({CurrentWeatherData, OneCallWeatherData}) {
                 </div>
                 <div className="w-full max-w-lg m-auto flex flex-wrap justify-evenly items-center">
                     <div className="flex-1 flex items-center justify-center relative">
-                        <img src={URL+CurrentWeatherData.weather[0].icon+'@2x.png'} alt="" srcSet="" className="filter drop-shadow-lg w-32"/>
+                        <Image
+                            src={URL+CurrentWeatherData.weather[0].icon+'@2x.png'}
+                            alt=""
+                            width="125"
+                            height="125"
+                            layout="fixed"
+                            objectFit="contain"
+                            quality={40}
+                        />
                         <span className="text-xs font-medium absolute bottom-2 md:text-base md:relative md:bottom-0">{CurrentWeatherData.weather[0].description}</span>
                     </div>
                     <div className="flex-1">
