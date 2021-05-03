@@ -29,7 +29,7 @@ function Welcome() {
                 <div className="container">
                     <div className="grid grid-flow-row auto-rows-fr md:grid-cols-2 gap-x-20">
                         <div>
-                            <h1 className="text-3xl font-bold leading-normal lg:text-6xl">Que el clima no te agarre nunca desprevenido</h1>
+                            <h1 className="py-6 text-3xl font-bold lg:text-6xl lg:leading-snug">Que el clima no te agarre nunca desprevenido</h1>
                             <p className="py-6 text-lg font-medium text-white lg:text-2xl">Climapp es una aplicacion que te ayuda a conocer el estado del clima en la ciudad que quieras</p>
                             <p className="py-6 text-lg font-medium text-white lg:text-2xl">Es Facil, Rapido e Intuitivo</p>
                             <Searcher/>
