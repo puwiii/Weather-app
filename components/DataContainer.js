@@ -1,18 +1,18 @@
 import {useEffect, useState} from 'react'
 import Image from 'next/image'
-import minTempIcon from "../imgs/min_temp.png";
-import maxTempIcon from "../imgs/max_temp.png";
-import precipitationIcon from "../imgs/precipitation.png";
-import humedityIcon from "../imgs/humedity.png";
-import windIcon from "../imgs/wind.png";
-import cloudIcon from "../imgs/clouds.png";
-import uvIcon from "../imgs/uv.png";
-import sunsetIcon from "../imgs/sunset_icon.svg";
-import sunriseIcon from "../imgs/sunrise_icon.svg";
-import morningIcon from "../imgs/morning.png";
-import noonIcon from "../imgs/noon.png";
-import eveningIcon from "../imgs/evening.png";
-import nightIcon from "../imgs/night.png";
+import minTempIcon from "../public/imgs/min_temp.png";
+import maxTempIcon from "../public/imgs/max_temp.png";
+import precipitationIcon from "../public/imgs/precipitation.png";
+import humedityIcon from "../public/imgs/humedity.png";
+import windIcon from "../public/imgs/wind.png";
+import cloudIcon from "../public/imgs/clouds.png";
+import uvIcon from "../public/imgs/uv.png";
+import sunsetIcon from "../public/imgs/sunset_icon.svg";
+import sunriseIcon from "../public/imgs/sunrise_icon.svg";
+import morningIcon from "../public/imgs/morning.png";
+import noonIcon from "../public/imgs/noon.png";
+import eveningIcon from "../public/imgs/evening.png";
+import nightIcon from "../public/imgs/night.png";
 function DataContainer({image, title, data, units, color, round, sufix, isCompact}) {
     
     const [icon, setIcon] = useState(minTempIcon)

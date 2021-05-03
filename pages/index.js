@@ -3,7 +3,7 @@ import Image from 'next/image'
 import Header from '../components/Header'
 import HomeComponent from '../components/HomeComponent'
 import requests from '../utils/requests'
-import notFound from '../imgs/not-found.png'
+import notFound from '../public/imgs/not-found.png'
 import Welcome from '../components/Welcome'
 
 export default function Home({CurrentWeatherData, OneCallWeatherData, fetchType}) {
@@ -11,7 +11,7 @@ export default function Home({CurrentWeatherData, OneCallWeatherData, fetchType}
   console.log(OneCallWeatherData)
   console.log(fetchType)
   return (
-    <div className="bg-gray-200 min-h-screen pt-32 text-gray-800 font-inter">
+    <div className={"bg-primary min-h-screen text-gray-800 font-inter "+(fetchType ? "bg-gray-200" : " ")}>
       <Head>
         <title>Climapp</title>
         <link rel="icon" href="/favicon.ico" />
@@ -20,14 +20,14 @@ export default function Home({CurrentWeatherData, OneCallWeatherData, fetchType}
       
       {
         fetchType ? 
-          <div>
+          <div className="pt-32">
             <Header />
-            <div className="container w-full flex flex-col text-center">
+            <div className="container w-full  flex flex-col text-center">
             {
               CurrentWeatherData.cod === "404" || CurrentWeatherData.cod === 401 ?
               <div>
                 
-                <h2 className="font-bold text-4xl text-gray-600">Ciudad no encontrada</h2>
+                <h2 className="font-bold text-4xl text-gray-800">Ciudad no encontrada</h2>
                 <Image
                   src={notFound}
                   alt=""

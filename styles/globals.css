@@ -24,4 +24,18 @@ body {
     max-width: 1920px;
   }
 }
+
+@-webkit-keyframes mover {
+  0% {
+  }
+  100% {
+  }
+}
+
+@keyframes mover {
+  0% {
+  }
+  100% {
+  }
+}
 /*# sourceMappingURL=globals.css.map */

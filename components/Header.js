@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router'
 import Image from 'next/image'
 import React, {useState} from 'react'
-import logotipo from "../imgs/logo.svg";
+import logotipo from "../public/imgs/logo_v2.svg";
 import Searcher from './Searcher';
 
 function Header() {
@@ -15,9 +15,9 @@ function Header() {
 
     return (
         <header className="py-2 bg-transparent absolute top-0 left-0 w-full z-50">
-            <div className="container flex items-center">
+            <div className="container flex flex-col items-center sm:flex-row">
 
-                <div className="mr-4 flex-1 hidden md:block">
+                <div className="mr-4 flex-1 block">
                     <Image
                         src={logotipo}
                         alt="Climapp"
